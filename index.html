@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individueller Splashscreen mit Bild</title>
+    <style>
+        /* Der Container für den Splashscreen */
+        #splashscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent Hintergrund */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            font-size: 2rem;
+            font-family: Arial, sans-serif;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+            cursor: pointer; /* Zeigt an, dass der Splashscreen klickbar ist */
+        }
+
+        /* Das Bild im Splashscreen */
+        #splashscreen img {
+            max-width: 80%; /* Bildgröße anpassen */
+            max-height: 80%;
+            border-radius: 10px; /* Optional: Abgerundete Ecken */
+        }
+
+        /* Hauptinhalt der Seite */
+        #content {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Textanimation des Splashscreens */
+        #splashscreen p {
+            margin: 0;
+            position: absolute;
+            bottom: 20px; /* Position des Textes */
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Splashscreen mit Bild -->
+    <div id="splashscreen" onclick="goToPage()">
+        <img src="./assets/Splashscreen/elden-ring-wallpaper.jpg" alt="Splashscreen Bild"> <!-- Hier das Bild einfügen -->
+        
+        <p>Klick hier, um weiterzugehen</p>
+    </div>
+
+    <!-- Hauptinhalt der Seite -->
+    <div id="content">
+        <h1>Dies ist der Hauptinhalt der Seite</h1>
+        <p>Der Splashscreen ist jetzt verschwunden.</p>
+    </div>
+
+    <script>
+        // Funktion für Weiterleitung nach Klick oder nach 5 Sekunden
+        function goToPage() {
+            window.location.href = "file:///D:/Anthony%20Schule/WEB/Elden_Ring_2.0/Elden%20Ring/EldenRing/MeineSeite.html"; // Hier den gewünschten Link einfügen
+        }
+
+        // Nach 5 Sekunden (5000 Millisekunden) automatisch weiterleiten
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("splashscreen").style.opacity = "0";
+                setTimeout(function() {
+                    document.getElementById("splashscreen").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                }, 1000);
+                goToPage(); // Automatische Weiterleitung
+            }, 2000);  // Zeit in Millisekunden (2 Sekunden)
+        };
+    </script>
+</body>
+</html>
